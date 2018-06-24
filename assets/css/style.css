@@ -61,3 +61,14 @@ vertical-nav ul li a:hover {
 
 /*this is the css for the landing page or profile.html*/
 
+.login-dark form .form-control {
+	background: none;
+	border: none;
+	border-bottom: 1px solid #434a52;
+	border-radius: 0;
+	-webkit-box-shadow: none;
+				box-shadow: none;
+	margin-top: 26px;
+	text-shadow: none;
+	outline: none;
+}
