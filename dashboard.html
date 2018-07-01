@@ -2,121 +2,92 @@
 <html lang="en">
 
 <head>
-	<title>DecisiveDevice</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/lumen/bootstrap.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-	<link rel="stylesheet" href="assets/css/style.css">
 
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	  crossorigin="anonymous">
 
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	  crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	  crossorigin="anonymous"></script>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+	<link href="assets/css/style.css" rel="stylesheet">
+
+	<title>
+		EmotionalControl
+	</title>
 </head>
 
 <body>
-	<div>
+	<nav class="navbar navbar-default navigation-clean">
+		<div class="container">
 
-		<nav class="navbar navbar-default navigation-clean">
-			<div class="container">
-
-				<div class="navbar-header">
-					<a class="navbar-brand navbar-link" href="#">DecisiveDevice</a>
-					<button class="navbar=toggle collapsed" data-toggle="collapse" data-target="#navcol-1">
-						<span class="sr-only">Toggle navigation</span>
-						</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-				</div>
-				<div class="collapse navbar-collapse" id="navcol-1">
-					<ul class="navbar-nav navbar-right">
-						<li role="presentation">
-							<a href="">FIND DEVICES</a>
-						</li>
-						<li role- "presentation">
-							<a href="#">HOW IT WORKS</a>
-						</li>
-						<li role="presentation">
-							<a href="login.html">LOGIN </a>
-						</li>
-						<li role="presentation">
-							<a href="signup.html">SIGN UP</a>
-						</li>
-					</ul>
-				</div>
+			<div class="navbar-header">
+				<a class="navbar-brand navbar-link" href="#">EmotionalControl</a>
+				<button class="navbar=toggle collapsed" data-toggle="collapse" data-target="#navcol-1">
+					<span class="sr-only">Toggle navigation</span>
+					
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
 			</div>
-		</nav>
-	</div>
-
-	<div class="container-fluid">
-		<!-- <h1>Device Search</h1> -->
-		<div class="row">
-			<nav class="vertical-nav col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
-				<ul class="">
-					<li class="nav-item">
-						<a class="nav-link active" href="#">Overview
-							<span class="sr-only">(current)</span>
-						</a>
+			<div class="collapse navbar-collapse" id="navcol-1">
+				<ul class="navbar-nav navbar-right">
 					</li>
-					<li class="nav-item">
-						<a class="nav-link active" href="#">Overview
-							<span class="sr-only">(current)</span>
-						</a>
+					<li role-="" "presentation"="">
+						<a href="#">HOW IT WORKS</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link active" href="#">Overview
-							<span class="sr-only">(current)</span>
-						</a>
+					<li role="presentation">
+						<a href="login.html">LOGIN </a>
+					</li>
+					<li role="presentation">
+						<a href="signup.html">SIGN UP</a>
 					</li>
 				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="col-xs-12" id="1234">
+		<br>
+		<h4>
+				<div id="error"></div>
+		</h4>
+		<br>
+		<br>
 
-			</nav>
-			<div class="col-sm-9 offset-sm-3 col-md-10">
-				<div class="features-boxed">
-					<!--<div class="container"-->
-					<div class="intro">
-						<h1 class="text-center">Overview</h1>
-					</div>
-					<div class="container">
-						<div id="results">
+		<div id="photo" alt="photo"></div>
+		<div id="container"><video autoplay="true" id="video"></video> <canvas id="canvas"></canvas>
+		</div>
 
-						</div>
-					</div>
-					<!--glyphicon for visual aid.-->
-					<div class="row features">
-						<div class="col-md-4 col-sm-6 item">
-							<div class="box">
-								<i class="glyphicon glyphicon-map-marker icon"></i>
-								<h3 class="name">DEVICE DEN</h3>
-								<p class="description"></p>
-								<a href="#" class="learn-more"> Learn more »</a>
-							</div>
+		<div id="error"></div>
 
-							<div class="col-md-8 col-sm-6 item">
-								<h3 class="name">SEARCH AREA</h3>
-								<p class="description"></p>
-								<a href="#" class="Learn-more">Learn more »</a>
-							</div>
-							<!--<div class="col-md-4 col-sm-6 item"-->
-							<div class="col-md-12 col-sm-6 item">
-								<div class="box">
-									<i class="glyphicon glyphicon-list-alt icon"></i>
-									<p class="description"></p>
-									<a href="#" class="learn-more">Learn more »</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
 
-				<!--ajax libs-->
-				<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-				<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-				<!-- im going to have to request js
-	<script src="assets/js/request.js?"></script>
-	-->
+		<h1>
+				<table class="table" id="infoTables"> </table>
+		</h1>
+		<button type="button" id="recognizeButton" class="btn btn-primary btn-block">Verify Face</button>
+
+</div>
+
+<script type="text/javascript">
+	function log_In() {
+			var us = document.getElementById("user").value;
+			var pas = document.getElementById("pass").value;
+			if (us === "admin" && pas === "admin") {
+					window.location = "dashboard.html";
+			} else {
+					document.getElementById("error").innerHTML = "Incorrect user or password. (Try admin/admin)";
+			}
+	}
+</script>
 </body>
 
 </html>
