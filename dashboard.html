@@ -2,10 +2,6 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	  crossorigin="anonymous">
@@ -133,6 +129,20 @@
 			}
 		}, false);
 
+		function takepicture() {
+			canvas.width = width; 
+			canvas.height = height;
+			canvas.getContext('2d').drawImage(video, 0, 0, width, height);
+			var data = vanvas.toDataURL('image/png');
+			recognizeSubject();
+
+		}
+
+		recognizeButton.addEventListener('click', function(ev) {
+			takepicture();
+			ev.preventDefault();
+		}, false);
+
 		})();
 
 		function recognizeSubject() {
@@ -151,8 +161,27 @@
 				console.log('Body:', JSON.parse(this.responseText));
 				var myObj = JSON.parse(this.responseText);
 			}
+		
+		document.getElementById("infoTables").innerHTML = "Welcome " + myObj.images["0"].candidates["0"].subject_id;
+
+		if (document.getElementById("infoTables").value != "") {
+			document.body.style.backgroundColor = "SpringGreen";
+			setTimout(redirect, 3000);
+
 		}
+		function redirect() {
+			location.href = "http://url.address";
 		}
+		};
+	var foto = document.getElementById("photo").getAttribute("src");
+
+	var body = {
+		'image': foto, 
+		'gallery_name': 'Estabonoodle'
+	};
+	request.send(JSON.stringify(body));
+		}
+
 	</script>
 </body>
 

@@ -37,8 +37,7 @@
 
 
 #behind {
-	float: left;
-	margin-left: 50%;
+	
 	background-color: lightskyblue;
 	align-self: center;
 }
@@ -48,4 +47,7 @@
 	border: 3px solid #838996;
 	padding: 10px; 
 	align-self: center;
+}
+#video {
+margin: auto
 }
