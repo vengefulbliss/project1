@@ -27,13 +27,13 @@
 
 <body>
 	<nav class="navbar navbar-default navigation-clean">
-		<div class="container">
+		<div class="header col-small-12 col-medium-12 col-large-12">
 
 			<div class="navbar-header">
 				<a class="navbar-brand navbar-link" href="#">EmotionalControl</a>
 				<button class="navbar=toggle collapsed" data-toggle="collapse" data-target="#navcol-1">
 					<span class="sr-only">Toggle navigation</span>
-					
+
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
@@ -42,52 +42,97 @@
 			<div class="collapse navbar-collapse" id="navcol-1">
 				<ul class="navbar-nav navbar-right">
 					</li>
-					<li role-="" "presentation"="">
-						<a href="#">HOW IT WORKS</a>
-					</li>
 					<li role="presentation">
+						<a id="howitworks" href="#">HOW IT WORKS</a>
+					</li>
+					<li id="loginbtn" role="presentation">
 						<a href="login.html">LOGIN </a>
 					</li>
-					<li role="presentation">
+					<li id="signupbtn" role="presentation">
 						<a href="signup.html">SIGN UP</a>
 					</li>
 				</ul>
 			</div>
 		</div>
 	</nav>
-	<div class="col-xs-12" id="1234">
+	<div class="col-xs-12" id="window">
 		<br>
 		<h4>
-				<div id="error"></div>
+			<div id="error"></div>
 		</h4>
 		<br>
 		<br>
 
 		<div id="photo" alt="photo"></div>
-		<div id="container"><video autoplay="true" id="video"></video> <canvas id="canvas"></canvas>
+		<div id="container">
+			<video autoplay="true" id="video"></video>
+			<canvas id="canvas"></canvas>
 		</div>
 
 		<div id="error"></div>
 
 
 		<h1>
-				<table class="table" id="infoTables"> </table>
+			<table class="table" id="infoTables"> </table>
 		</h1>
 		<button type="button" id="recognizeButton" class="btn btn-primary btn-block">Verify Face</button>
 
-</div>
+	</div>
 
-<script type="text/javascript">
-	function log_In() {
+	<script type="text/javascript">
+		function log_In() {
 			var us = document.getElementById("user").value;
 			var pas = document.getElementById("pass").value;
 			if (us === "admin" && pas === "admin") {
-					window.location = "dashboard.html";
+				window.location = "dashboard.html";
 			} else {
-					document.getElementById("error").innerHTML = "Incorrect user or password. (Try admin/admin)";
+				document.getElementById("error").innerHTML = "Incorrect user or password. (Try admin/admin)";
 			}
-	}
-</script>
+		}
+		//This function manages the camera, takes the photos, 
+		(function () {
+				var streaming = false,
+					video = document.querySelector('#video'),
+					canvas = document.querySelector('#canvas'),
+					photo = document.querySelector('#photo'),
+					recognizeButton = document.querySelector('#recognizeButton'),
+					width = 480,
+					height = 0;
+
+				navigator.getMedia = (navigator.getUserMedia ||
+					navigator.webKitGetUserMedia ||
+					Navigator.mozgetUserMedia ||
+					navigator.msGetUserMedia); 
+				
+			navigator.getMedia({
+				video: true,
+				audio: false
+			}, 
+			function(stream){
+				if (navigator.mozGetUserMedia) {
+					video.mozSrcObject = stream;
+				} else {
+					var vendorURL = window.URL || window.webkitURL;
+					video.src = vendorURL.createObjectURL(stream);
+				}
+			video.play();
+			},
+			function(err) {
+				console.log("An error occured! " + err);
+			}
+			);
+		
+		video.addEventListener('canplay', function(ev) {
+			if (!streaming) {
+				height = video.videoHeight / (video.videoWidth / width);
+				video.setAttribute("width", width);
+				video.setAttribute("height", height);
+				canvas.setAttribute("width", width);
+				canvas.setAttribute("height", height);
+				streaming = true;
+			}
+		}, false);
+	</script>
 </body>
 
 </html>
