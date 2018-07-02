@@ -55,7 +55,7 @@
 			</div>
 		</div>
 	</nav>
-	<div class="col-xs-12" id="window">
+	<div class="col-xs-12" id="behind">
 		<br>
 		<h4>
 			<div id="error"></div>
@@ -132,6 +132,27 @@
 				streaming = true;
 			}
 		}, false);
+
+		})();
+
+		function recognizeSubject() {
+			var request = new XMLHttpRecquest();
+
+			request.open('POST', 'https://api.kairos.com/recognize');
+
+			request.setRequestHeader('Content-Type', 'appliscation/json');
+			request.setRequestHeader('app_id', ' ' );
+			request.setRequestHeader('app_key', ' ' );
+
+		request.onreadystatechange= function() {
+			if (this.readyState === 4) {
+				console.log('Status:', this.status);
+				console.log('Headers:', this.getAllResponseHeaders());
+				console.log('Body:', JSON.parse(this.responseText));
+				var myObj = JSON.parse(this.responseText);
+			}
+		}
+		}
 	</script>
 </body>
 

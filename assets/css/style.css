@@ -36,10 +36,11 @@
 }
 
 
-#window {
+#behind {
 	float: left;
 	margin-left: 50%;
 	background-color: lightskyblue;
+	align-self: center;
 }
 #container {
 	margin: auto;
