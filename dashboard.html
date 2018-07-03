@@ -3,6 +3,10 @@
 
 <head>
 	<!-- Latest compiled and minified CSS -->
+	<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	  crossorigin="anonymous">
 
@@ -51,7 +55,7 @@
 			</div>
 		</div>
 	</nav>
-	<div class="col-xs-12" id="behind">
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="behind">
 		<br>
 		<h4>
 			<div id="error"></div>
@@ -72,117 +76,31 @@
 			<table class="table" id="infoTables"> </table>
 		</h1>
 		<button type="button" id="recognizeButton" class="btn btn-primary btn-block">Verify Face</button>
-
+		</div>
+<!--this is where the recognition window ends and the display for the gifs starts.-->
+<br/>
+<br/>
+		<div id="gifButtonsView" class="container">
+			<div class="display">
+				<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+			</div>
+		</div>
+		<div id="viewGifs">
+		</div>
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
 	</div>
+	<form id="gif-form" role="form">
+		<h2><legend>Search gifs</legend></h2>
+		<div class="form-group">
+			<label for="input">Search for gifs the old fashioned way.</label>
+			<input type="text" id="input">
+		</div>
+		<input id="addGif" type="submit" value="Add your search" class="btn btn-primary">
+		<input id="removeGif" type="submit" value="Remove last search" class="btn btn-primary">
+	</form>
 
-	<script type="text/javascript">
-		function log_In() {
-			var us = document.getElementById("user").value;
-			var pas = document.getElementById("pass").value;
-			if (us === "admin" && pas === "admin") {
-				window.location = "dashboard.html";
-			} else {
-				document.getElementById("error").innerHTML = "Incorrect user or password. (Try admin/admin)";
-			}
-		}
-		//This function manages the camera, takes the photos, 
-		(function () {
-				var streaming = false,
-					video = document.querySelector('#video'),
-					canvas = document.querySelector('#canvas'),
-					photo = document.querySelector('#photo'),
-					recognizeButton = document.querySelector('#recognizeButton'),
-					width = 480,
-					height = 0;
-
-				navigator.getMedia = (navigator.getUserMedia ||
-					navigator.webKitGetUserMedia ||
-					Navigator.mozgetUserMedia ||
-					navigator.msGetUserMedia); 
-				
-			navigator.getMedia({
-				video: true,
-				audio: false
-			}, 
-			function(stream){
-				if (navigator.mozGetUserMedia) {
-					video.mozSrcObject = stream;
-				} else {
-					var vendorURL = window.URL || window.webkitURL;
-					video.src = vendorURL.createObjectURL(stream);
-				}
-			video.play();
-			},
-			function(err) {
-				console.log("An error occured! " + err);
-			}
-			);
-		
-		video.addEventListener('canplay', function(ev) {
-			if (!streaming) {
-				height = video.videoHeight / (video.videoWidth / width);
-				video.setAttribute("width", width);
-				video.setAttribute("height", height);
-				canvas.setAttribute("width", width);
-				canvas.setAttribute("height", height);
-				streaming = true;
-			}
-		}, false);
-
-		function takepicture() {
-			canvas.width = width; 
-			canvas.height = height;
-			canvas.getContext('2d').drawImage(video, 0, 0, width, height);
-			var data = vanvas.toDataURL('image/png');
-			recognizeSubject();
-
-		}
-
-		recognizeButton.addEventListener('click', function(ev) {
-			takepicture();
-			ev.preventDefault();
-		}, false);
-
-		})();
-
-		function recognizeSubject() {
-			var request = new XMLHttpRecquest();
-
-			request.open('POST', 'https://api.kairos.com/recognize');
-
-			request.setRequestHeader('Content-Type', 'appliscation/json');
-			request.setRequestHeader('app_id', ' ' );
-			request.setRequestHeader('app_key', ' ' );
-
-		request.onreadystatechange= function() {
-			if (this.readyState === 4) {
-				console.log('Status:', this.status);
-				console.log('Headers:', this.getAllResponseHeaders());
-				console.log('Body:', JSON.parse(this.responseText));
-				var myObj = JSON.parse(this.responseText);
-			}
-		
-		document.getElementById("infoTables").innerHTML = "Welcome " + myObj.images["0"].candidates["0"].subject_id;
-
-		if (document.getElementById("infoTables").value != "") {
-			document.body.style.backgroundColor = "SpringGreen";
-			setTimout(redirect, 3000);
-
-		}
-		function redirect() {
-			location.href = "http://url.address";
-		}
-		};
-	var foto = document.getElementById("photo").getAttribute("src");
-
-	var body = {
-		'image': foto, 
-		'gallery_name': 'Estabonoodle'
-	};
-	request.send(JSON.stringify(body));
-		}
-
-	</script>
+<!--this is the link fo rhte javascript page.-->
+	<script type="text/javascript" src="assets/js/app.js"></script>
 </body>
 
 </html>

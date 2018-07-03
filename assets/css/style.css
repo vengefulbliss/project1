@@ -1,7 +1,14 @@
+body {
+	background: url("../images/Mona-lIsa-test.jpg");
+	background-size: 100%;
+	image-orientation: center;
+	background-repeat: no-repeat;
+	background-color: #474747;
+}
 
 .header {
 	background-color: skyblue;
-	margin: auto; 
+	margin: auto;
 	width: 100%;
 }
 
@@ -9,6 +16,7 @@
 	font-size: 30px;
 	font-style: bold;
 }
+
 .collapsed {
 	height: 20px;
 	width: 70px;
@@ -20,34 +28,61 @@
 	margin-top: 10px;
 	text-align: center;
 	font-size: 15px;
-	
 }
 
-#howitworks{
+#howitworks {
 	margin-right: 10px;
 }
+
 #loginbtn {
 	margin-left: 20px;
 	margin-right: 10px;
 }
+
 #signupbtn {
-	margin-left: 20px; 
+	margin-left: 20px;
 	margin-right: 10px;
 }
 
-
 #behind {
-	
-	background-color: lightskyblue;
+	background-color: rgba(126, 192, 238, .5);
 	align-self: center;
 }
+
 #container {
+	background-color: rgba(66, 125, 244, .1);
+	max-width: 830px;
+	max-height: 415px;
 	margin: auto;
-	width: 75%;
+	width: 100%;
 	border: 3px solid #838996;
-	padding: 10px; 
+	padding: 10px;
 	align-self: center;
 }
+
 #video {
-margin: auto
+	margin: auto;
+	max-width: 400px;
+	width: 50%;
+	height: 50%;
+	padding-right: 5px;
 }
+
+#canvas {
+	margin: auto;
+	max-width: 400px;
+	float: right;
+	width: 50%;
+	padding-left: 5px;
+}
+
+legend {
+	font-size: 22px;
+	color: lightcyan;
+}
+
+.form-group {
+	font-size: 16px;
+	color: lightcyan;
+}
+

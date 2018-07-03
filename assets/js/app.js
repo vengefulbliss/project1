@@ -1,130 +1,105 @@
-var generateFavs = function(result) {
-	//console.log(result)
-	$("#favorites").empty();
+		function log_In() {
+			var us = document.getElementById("user").value;
+			var pas = document.getElementById("pass").value;
+			if (us === "admin" && pas === "admin") {
+				window.location = "dashboard.html";
+			} else {
+				document.getElementById("error").innerHTML = "Incorrect user or password. (Try admin/admin)";
+			}
+		}
+		//This function takes the photos
+		(function () {
+				var streaming = false,
+					video = document.querySelector('#video'),
+					canvas = document.querySelector('#canvas'),
+					photo = document.querySelector('#photo'),
+					recognizeButton = document.querySelector('#recognizeButton'),
+					width = 480,
+					height = 0;
 
-	//console.log(result);
-	for(var i = 0; i < 4; i++) {
-
-		//define device Item with props
-		var deviceItem = result[i];
-		//console.log(deviceItem);
-		//console.log(typeof(JSON.parse(deviceItem)))
-		//define jquery Dom elements
-		var favButton = $("<a>")
-		var colDiv = $("<div>");
-		var cardDiv = $("<div>");
-		var cardBlock = $("<div>");
-		var title = $("<h4>");
-		var img = $("<img>");
-		var deviceLabels = $("<p>");
-		var moreInfo =("<a>");
-
-		favButton.attr({
-			name: deviceItem.label,
-			class: "favButton",
-		});
-
-		colDiv.attr({ class: "col-md-3 col-sm-6",
-	});
-
-		cardDiv.attr({
-			class: "card deviceCard"
-		});
+				navigator.getMedia = (navigator.getUserMedia ||
+					navigator.webKitGetUserMedia ||
+					navigator.mozgetUserMedia ||
+					navigator.msGetUserMedia); 
+				
+			navigator.getMedia({
+				video: true,
+				audio: false
+			}, 
+			function(stream){
+				if (navigator.mozGetUserMedia) {
+					video.mozSrcObject = stream;
+				} else {
+					var vendorURL = window.URL || window.webkitURL;
+					video.src = vendorURL.createObjectURL(stream);
+				}
+			video.play();
+			},
+			function(err) {
+				console.log("An error occured! " + err);
+			}
+			);
 		
-		img.attr({
-			src: deviceItem.image,
-			alt: deviceItem.label, 
-			class: "card-img-top"
-		});
+		video.addEventListener('canplay', function(ev) {
+			if (!streaming) {
+				height = video.videoHeight / (video.videoWidth / width);
+				video.setAttribute("width", width);
+				video.setAttribute("height", height);
+				canvas.setAttribute("width", "50%");
+				canvas.setAttribute("height", "50%");
+				streaming = true;
+			}
+		}, false);
+
+		function takepicture() {
+			canvas.width = width; 
+			canvas.height = height;
+			canvas.getContext('2d').drawImage(video, 0, 0, width, height);
+			var data = canvas.toDataURL('image/png');
+			recognizeSubject();
+
+		}
+
+		recognizeButton.addEventListener('click', function(ev) {
+			takepicture();
+			ev.preventDefault();
+		}, false);
+
+		})();
+
+		function recognizeSubject() {
+			var request = new XMLHttpRecquest();
+
+			request.open('POST', 'https://api.kairos.com/recognize');
+
+			request.setRequestHeader('Content-Type', 'application/json');
+			request.setRequestHeader('app_id', '9943ae12' );
+			request.setRequestHeader('app_key', '454f54a4dcac195f43937907f9d4f647' );
+
+		request.onreadystatechange= function() {
+			if (this.readyState === 4) {
+				console.log('Status:', this.status);
+				console.log('Headers:', this.getAllResponseHeaders());
+				console.log('Body:', JSON.parse(this.responseText));
+				var myObj = JSON.parse(this.responseText);
+			}
 		
-		cardBlock.attr({
-			class: "card-block",
-			style: "text-align:center"
-		});
+		document.getElementById("infoTables").innerHTML = "Welcome " + myObj.images["0"].candidates["0"].subject_id;
 
-		title.attr({
-			class: "card-title",
-			style: "font-weight: bold;"
-		})
+		if (document.getElementById("infoTables").value != "") {
+			document.body.style.backgroundColor = "SpringGreen";
+			setTimout(redirect, 3000);
 
-		title.text(deviceItem.label);
+		}
+		function redirect() {
+			location.href = "http://url.address";
+		}
+		};
+	var photo = document.getElementById("photo").getAttribute("src");
 
-		deviceLabels.attr({
-			style: "font-weight:bold;color:black"
-		})
-
-		console.log(deviceItem.deviceLabels);
-		deviceLabels.text("Device Labels : " + deviceItem.deviceLabels);
-
-		moreInfo.attr({
-		href: deviceItem.url,
-		class: "btn btn-primary card-btn",
-		target: "_blank"
-		});
-	
-	moreInfo.text("More Info")
-
-	
-	colDiv.append(cardDiv);
-	cardDiv.append(img);
-	cardDiv.append($("<hr>"))
-	cardBlock.append(title);
-	cardBlock.append($("<hr>"));
-	cardBlock.append(deviceLabels);
-	cardBlock.append($("<hr>"));
-	cardBlock.append(moreInfo);
-
-
-	cardDiv.append(cardBlock)
-
-	$("#favorites").append(colDiv);
-}
-};
-
-var myFavs = [
-{
-	image: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5882/5882900_sd.jpg;maxHeight=640;maxWidth=550" ,
-	label: "thin, powerful, perfect for any situation" ,
-	deviceLabels: "Ultra book",
-  url: "https://www.bestbuy.com/site/razer-blade-stealth-13-3-qhd-touch-screen-laptop-intel-core-i7-16gb-memory-512gb-solid-state-drive-black/6172318.p?skuId=6172318" 
-},
-{
-	image: "./assets/images/surfacepro.jpg", 
-	label: "The Surface Pro 4! hybrid device",
-	deviceLabels: "Powerful 2 in 1 device",
-	url: "https://www.bestbuy.com/site/microsoft-surface-pro-with-lte-advanced-unlocked-12-3-touch-screen-intel-core-i5-8gb-memory-256gb-solid-state-drive-silver/6216320.p?skuId=6216320"
-},
-
-{
-	image:	"./assets/images/surfacebook2.jpg",
-	label: "Surface Book 2",
-	deviceLabels: "Microsoft Surface book, the power of a desktop; portability of a tablet.",
-	url: "https://www.bestbuy.com/site/microsoft-surface-book-2-15-touch-screen-pixelsense-display-intel-core-i7-16gb-256gb-dgpu-silver/6145601.p?skuId=6145601"
-},
-{
-	image: "./assets/images/macbookpro.jpg",
-	label: "Macbook Pro",
-	deviceLabels: "Top of the line MacBook Pro",
-	url: "https://www.bestbuy.com/site/apple-macbook-pro-15-display-intel-core-i7-16-gb-memory-256gb-flash-storage-latest-model-space-gray/5721702.p?skuId=5721702"
-}
-];
-
-      
-$(document).ready(function(){
-  $.get("api/user").done(function(result) {
-    console.log(result);
-    typeof(result);
-    if (result) {
-      $.get("/api/favorites/" + result.user, function(result){
-        console.log(result)
-        if(result === "NO Favorites" || result.length < 5){
-            console.log("we are in no favs ")
-          generateFavs(myFavs);
-        } else {
-            console.log("we are in there are favs")
-          generateFavs(result);
-        }
-      })
-    }
-  })
-});
+	var body = {
+		'image': photo, 
+		'gallery_name': 'Estabonoodle'
+	};
+	request.send(JSON.stringify(body));
+		}
