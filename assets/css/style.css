@@ -93,6 +93,11 @@ body {
 	width: 100%;
 }
 
+#input {
+	font-size: 14px;
+	color: black;
+}
+
 .imageNav {
 	background-color: rgba(126, 192, 238, .5);
 }
