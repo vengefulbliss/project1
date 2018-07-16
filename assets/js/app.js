@@ -46,7 +46,7 @@
 				video.setAttribute("width", width);
 				video.setAttribute("height", height);
 				canvas.setAttribute("width", "50%");
-				canvas.setAttribute("height", "50%");
+				canvas.setAttribute("height", height);
 				streaming = true;
 			}
 		}, false);

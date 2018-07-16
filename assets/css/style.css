@@ -47,6 +47,7 @@ body {
 #behind {
 	background-color: rgba(126, 192, 238, .5);
 	align-self: center;
+	max-height: 500px;
 }
 
 #container {
@@ -55,7 +56,7 @@ body {
 	max-height: 415px;
 	margin: auto;
 	width: 100%;
-	border: 3px solid #838996;
+	border: 6px solid rgb(131, 136, 149);
 	padding: 10px;
 	align-self: center;
 }
@@ -71,18 +72,48 @@ body {
 #canvas {
 	margin: auto;
 	max-width: 400px;
+	max-height: 295.5px;
 	float: right;
 	width: 50%;
 	padding-left: 5px;
 }
 
+#recognizeButton {
+	padding-bottom: 5px;
+	position: relative;
+}
+
+
+
+#searched {
+	display: inline-block;
+	margin: auto;
+	min-height: 100px;
+	border: 3px solid #838996;
+	width: 100%;
+}
+
+.imageNav {
+	background-color: rgba(126, 192, 238, .5);
+}
+
 legend {
+	padding-left: 10px;
 	font-size: 22px;
 	color: lightcyan;
 }
 
+form {
+	background-size: 100%;
+	image-orientation: center;
+	background-repeat: no-repeat;
+	background-color: #474747;
+}
+
 .form-group {
+	padding-left: 10px;
 	font-size: 16px;
 	color: lightcyan;
 }
+
 
