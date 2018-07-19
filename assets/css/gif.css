@@ -1,0 +1,22 @@
+#gifButtonsView {
+	margin: 3px;
+	border-color: #fff;
+	height: 34px;
+	width: 75px;
+	padding-top: 30px;
+	text-align: center;
+	display: inline-block;
+}
+
+	
+.emotion {
+	height: 34px;
+	width: 85px;
+	float: left;
+	margin: 3px;
+}
+gifDiv {
+	float: left;
+	margin: 3px;
+}
+

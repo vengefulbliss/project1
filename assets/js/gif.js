@@ -1,11 +1,11 @@
 $( document ).ready(function() {
 	// An array of searches, new searches will be pushed into this array;
-	var actions = [];
+	var emotions = [];
 	// Creating Functions & Methods
 	// Function that displays all gif buttons
 	function displayGifButtons(){
 			$("#gifButtonsView").empty(); // erasing anything in this div id so that it doesnt duplicate the results
-			for (var i = 0; i < actions.length; i++){
+			for (var i = 0; i < emotions.length; i++){
 					var gifButton = $("<button>");
 					gifButton.addClass("emotion");
 					gifButton.addClass("btn btn-primary")
@@ -30,7 +30,7 @@ $( document ).ready(function() {
 	// Function to remove last button
 			// Doesnt work properly yet removes all of the added buttons
 			// rather than just the last
-	function removeLastButton(){
+	function removeLastSearch(){
 			$("removeGif").on("click", function(){
 			emotions.pop(emotion);
 			displayGifButtons();
