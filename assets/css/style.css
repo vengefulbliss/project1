@@ -95,6 +95,15 @@ body {
 	text-align: center;
 	width: 100%;
 }
+#kairos-response {
+	opacity: 0.7;
+	background-size: 75%;
+	max-height: 60px;
+	min-height: 50px;
+	margin: auto;
+	text-align: center;
+	width: 100%;
+}
 
 #input {
 	font-size: 14px;
