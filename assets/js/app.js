@@ -1,7 +1,4 @@
 //above is the hidden information for the project.
-
-
-
 (function () {
 	var streaming = false,
 		video = document.querySelector('#video'),
@@ -49,10 +46,10 @@
 		canvas.height = height;
 		canvas.getContext('2d').drawImage(video, 0, 0, width, height);
 	
-		var data = canvas.toDataURL('image/png');
-		photo.setAttribute('src', data);
+		var imageData = canvas.toDataURL('image/png');
+		photo.setAttribute('src', imageData);
 		recognizeSubject();
-		
+		console.log(imageData);
 	}
 	
 	recognizeButton.addEventListener('click', function (ev) {
@@ -61,96 +58,42 @@
 	}, false);
 
 })();
-
-
-
+var api_url = "https://api.kairos.com"
+var app_id = "9943ae12";
+var app_key = "454f54a4dcac195f43937907f9d4f647";
+var image_url = "imageData"
+var origin = "Access-Control-Allow-Origin"
 function recognizeSubject() {
-	var request = new XMLHttpRequest();
 
-	request.open('POST', 'https://api.kairos.com/v2/' + 'analytics');
-	request.setRequestHeader('Content-Type', 'application/json');
-	request.setRequestHeader('app_id', '9943ae12');
-	request.setRequestHeader('app_key', '454f54a4dcac195f43937907f9d4f647');
-
-	request.onreadystatechange = function () {
-		if (this.readyState === 0) {
-			console.log('Status:', this.status);
-			console.log('Headers:', this.getAllResponseHeaders());
-			console.log('Body:', JSON.parse(this.responseText));
-			var myObj = JSON.parse(this.responseText);
-		}
-		document.getElementById("kairos-response").innerHTML = "Welcome " + myObj.images["0"].candidates["0"].subject_id;
-
-		if (document.getElementById("kairos-response").value != "") {
-			document.body.style.backgroundColor = "SpringGreen";
-			setTimeout(redirect, 3000);
-		}
-
-		function redirect() {
-			location.href = "";
-		}
-	};
-	detect = function (image_data, callback, is_url) {
-		var myObj = new image();
-		myObj.onload = function () {
-			if (is_url) {
-				data = image_data;
-			} else {
-				data = String(imageToDataURI(myObj));
-				data = data.replace("data:image/jpeg;base64,", "");
-				data = data.replace("data:image/jpg;base64,", "");
-				data = data.replace("data:image/png;base64,", "");
-				data = data.replace("data:image/gif;base64,", "");
-				data = data.replace("data:image/bmp;base64,", "");
-			}
-
-		};
+	var headers = new Headers();
+	/*Header type	Response header
+Forbidden header name	no */
+headers.append("app_id", app_id)
+headers.append("app_key", app_key);
+var payload = {"image" : image_url};
+var proxyUrl = 'https://cors-anywhere.herokuapp.com/',
+    targetUrl = 'http://catfacts-api.appspot.com/api/facts?number=99'
+fetch(proxyUrl + targetUrl)
+  .then(blob => blob.json())
+  .then(data => {
+    console.table(data);
+    document.querySelector("pre").innerHTML = JSON.stringify(data, null, 2);
+    return data;
+  })
+  .catch(e => {
+    console.log(e);
+    return e;
+  });
+var init = {
+	method: "POST",
+	headers: headers,
+	body: JSON.stringify(payload)
+};
+	const request = async  () => {
+		const response = await fetch(api_url + "/v2/analytics", init)
+		const json = await response.json();
+		console.log(json);
 	}
+	request();
 }
 
-// function drawBoundingBox(photo, scaling_factor, face, color) {
-// 	var imageObj = new Image();
-// 	imageObj.onload = function () {
-// 		var canvas = $('#photo')[0];
-// 		var context = canvas.getContext('2d');
-// 		context.clearRect(0, 0, canvas.width, canvas.height);
-// 		context.drawImage(imageObj, 0, 0, imageObj.width * scaling_factor, imageObj.height * scaling_factor);
-
-// 		if (face) {
-// 			var top = face.top * scaling_factor;
-// 			var left = face.left * scaling_factor;
-// 			var width = face.width * scaling_factor;
-// 			var height = face.height * scaling_factor;
-
-// 			// draw bounding box
-// 			context.beginPath();
-// 			context.rect(left, top, width, height);
-// 			context.lineWidth = 4;
-// 			context.strokeStyle = color;
-// 			context.stroke();
-// 		}
-// 	};
-// 	imageObj.src = photo;
-// }
-
-// function dataURItoBlob(dataURI) {
-// 	// convert base64/URLEncoded data component to raw binary data held in a string
-// 	var byteString;
-// 	if (dataURI.split(',')[0].indexOf('base64') >= 0)
-// 		byteString = atob(dataURI.split(',')[1]);
-// 	else
-// 		byteString = unescape(dataURI.split(',')[1]);
-
-// 	// separate out the mime component
-// 	var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-
-// 	// write the bytes of the string to a typed array
-// 	var ia = new Uint8Array(byteString.length);
-// 	for (var i = 0; i < byteString.length; i++) {
-// 		ia[i] = byteString.charCodeAt(i);
-// 	}
-
-// 	return new Blob([ia], {
-// 		type: mimeString
-// 	});
-// }

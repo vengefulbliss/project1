@@ -1,56 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- This is an example of a method in which 
+a snapshot can be taken from the user's 
+webcam video stream, and the image data 
+can be extracted using Canvas -->
+
+<html>
 
 <head>
-
-	<meta charset="UTF-8">
-
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>landing page</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
-	  crossorigin="anonymous">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <title>Kairos Webcam Image Data Extraction Example</title>  
 </head>
-
 <body>
-	<div class="container">
-		<div class="form-container outline-container">
-			<form>
-				<h2 id="profile">Just about finished.</h2>
-				<h6 class="center-h6">info needed to create your account.</h6>
-
-				<div class="form-group">
-					<label for- "email">Emailaddress</label>
-					<input type="email" class="form-control" id="emailaddress" placeholder="name@example.com">
-				</div>
-				<div class="form-group">
-					<label for="Password">Password</label>
-					<input type="text" class="for-control" id="password" placeholder="Password">
-				</div>
-
-				<div class="form-group">
-					<label for="birthdate">Birth Date</label>
-					<input type="text" class="for-control" id="birthdate" placeholder="MM/DD/YYYY">
-				</div>
-
-				<div class="form-group">
-					<label for="gender">Gender</label>
-					<div class="form-check">
-						<label class="form-check-label">
-							<input class="form-check-input" type="radio" name="gender" id="female" value="F"> female</label>
-							</label>
-							<label class="form-check-label">
-							<input class="form-check-input" type="radio" name="gender" id="male" value="M"> Male</label>
-						</label>
-					</div>
-				</div>
-
-				<button type="submit" class="btn btn-primary">Sign Up</button>
-			</form>
-		</div>
-	</div>
+    <a href="#" onClick="webcamModule();">START CAMERA</a></br>
+    <video id="webcamVideo"></video>
+    <div id="showCounter"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script>
+        var webcamModule = function () {
+            var streaming = false;
+            var video = null;
+            (function () {
+                video = document.getElementById('webcamVideo');
+                navigator.getUserMedia({
+                    video: true,
+                    audio: false
+                },
+                    function(stream) {
+                        if (navigator.mozGetUserMedia) {
+                          video.mozSrcObject = stream;
+                        } 
+                        else {
+                            var vendorURL = window.URL || window.webkitURL;
+                            video.src = vendorURL.createObjectURL(stream);
+                        }
+                        video.play();
+                        localStream = stream.getTracks()[0];
+                    },
+                    function(err) {
+                        console.log(err)
+                    }
+                );
+                video.addEventListener('canplay', function(ev){
+                    if (!streaming) {
+                        video.setAttribute('width', '600');
+                        video.setAttribute('height', '450');
+                        streaming = true;
+                    }
+                    var captureInterval = 3000;
+                    var countdown = captureIntaerval/1000;
+                    var counterFunction = setInterval(function () {
+                        $("#showCounter").html(countdown);
+                        if (countdown <= 0) {
+                            takepicture(video);
+                            clearInterval(counterFunction);
+                            localStream.stop();
+                        }
+                        countdown --;
+                    },1000);
+                },  false);
+            })();
+        };
+        var takepicture = function(video) {
+            $("#showCounter").html("Retrieving data...");
+            var canvas = document.createElement('CANVAS');
+            var context = canvas.getContext('2d');
+            canvas.width = '600';
+            canvas.height = '450';
+            // draw video image onto canvas, get data
+            context.drawImage(video, 0, 0);
+            var imageData = canvas.toDataURL('image/png');
+            $("#showCounter").html("See image data in console.");
+            $(video).hide();
+            console.log(imageData)
+        }
+	</script>
 </body>
 
 </html>
