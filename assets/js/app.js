@@ -68,22 +68,11 @@ function recognizeSubject() {
 	var headers = new Headers();
 	/*Header type	Response header
 Forbidden header name	no */
+headers.append("origin", origin)
 headers.append("app_id", app_id)
 headers.append("app_key", app_key);
 var payload = {"image" : image_url};
-var proxyUrl = 'https://cors-anywhere.herokuapp.com/',
-    targetUrl = 'http://catfacts-api.appspot.com/api/facts?number=99'
-fetch(proxyUrl + targetUrl)
-  .then(blob => blob.json())
-  .then(data => {
-    console.table(data);
-    document.querySelector("pre").innerHTML = JSON.stringify(data, null, 2);
-    return data;
-  })
-  .catch(e => {
-    console.log(e);
-    return e;
-  });
+
 var init = {
 	method: "POST",
 	headers: headers,
