@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Latest compiled and minified CSS -->
+	<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	  crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	  crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+	  crossorigin="anonymous"></script>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+	<link href="assets/css/style.css" rel="stylesheet">
+	<link href="assets/css/gif.css" rel="stylesheet">
+
+	<title>
+		EmotionalControl
+	</title>
+</head>
+
+<body>
+	<nav class="navbar navbar-default navigation-clean">
+		<div class="header col-small-12 col-medium-12 col-large-12">
+
+			<div class="navbar-header">
+				<a class="navbar-brand navbar-link" href="#">EmotionalControl</a>
+				<button class="navbar=toggle collapsed" data-toggle="collapse" data-target="#navcol-1">
+					<span class="sr-only">Toggle navigation</span>
+
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse" id="navcol-1">
+				<ul class="navbar-nav navbar-right">
+					</li>
+					<li role="presentation">
+						<a id="howitworks" href="#">HOW IT WORKS</a>
+					</li>
+					<li id="loginbtn" role="presentation">
+						<a href="login.html">LOGIN </a>
+					</li>
+					<li id="signupbtn" role="presentation">
+						<a href="signup.html">SIGN UP</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="behind">
+		
+		<br>
+		<h4>
+			<div id="error"></div>
+		</h4>
+		<br>
+		<br>
+
+		<div id="photo" alt="photo"></div>
+		<div id="container">
+			<video autoplay="true" id="video"></video>
+			<canvas id="canvas"></canvas>
+		</div>
+
+		<div id="error"></div>
+
+
+		<h1>
+			<table class="table" id="infoTables"> </table>
+		</h1>
+		<button type="button" id="recognizeButton" class="btn btn-primary btn-block">Verify Face</button>
+		<br>
+		</div>
+<!--this is where the recognition window ends and the display for the gifs starts.-->
+
+
+<div class="contentNav">
+	<div class="imageNav col-sx-12 col-sm-12 col-md-12 col-lg-12">
+		<div id="searched">
+			<div id='kairos-response'>
+				<i>(kairos response will appear here.</i>
+			</div>
+		</div>
+</div>
+			<div id="gifButtonsView" class="container">
+		</div>
+			<div class="display">
+				<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+			</div>
+		</div>
+		<div id="viewGifs">
+		</div>
+		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
+	</div>
+	<form id="gif-form" role="form">
+		<h2><legend>Search gifs</legend></h2>
+		<div class="form-group">
+			<label for="input">Search for gifs the old fashioned way.</label>
+			<input type="text" id="input">
+		</div>
+		<input id="addGif" type="submit" value="Add your search" class="btn btn-primary">
+		<input id="removeGif" type="submit" value="Reset Page" class="btn btn-primary">
+	</form>
+</div>
+<!--this is the link fo rhte javascript page.-->
+	<script type="text/javascript" src="assets/js/app.js"></script>
+	<script type="text/javascript" src="assets/js/gif.js"></script>
+</body>
+
+</html>
