@@ -3,7 +3,7 @@
 	var streaming = false,
 		video = document.querySelector('#video'),
 		canvas = document.querySelector('#canvas'),
-		photo = document.querySelector('#kairos-response'),
+		sourceImage = document.querySelector('#sourceImage'),
 		recognizeButton = document.querySelector('#recognizeButton'),
 		width = 480,
 		height = 0;
@@ -45,44 +45,89 @@
 		canvas.width = width;
 		canvas.height = height;
 		canvas.getContext('2d').drawImage(video, 0, 0, width, height);
-	
-		var imageData = canvas.toDataURL('image/png');
-		photo.setAttribute('src', imageData);
-		recognizeSubject();
-		console.log(imageData);
+		
+		// var imageText = function(text) {
+		// 	return 
+		// }
+		var test = sourceImage;
+		document.getElementById("inputImage").value = test;
+		
+		
+		var dataUrl = canvas.toDataURL('image/png');
+		sourceImage.setAttribute('src', dataUrl);
 	}
 	
 	recognizeButton.addEventListener('click', function (ev) {
 		takepicture();
 		ev.preventDefault();
 	}, false);
-
 })();
-var api_url = "https://api.kairos.com"
-var app_id = "9943ae12";
-var app_key = "454f54a4dcac195f43937907f9d4f647";
-var image_url = "imageData"
-var origin = "Access-Control-Allow-Origin"
-function recognizeSubject() {
 
-	var headers = new Headers();
-	/*Header type	Response header
-Forbidden header name	no */
-headers.append("origin", origin)
-headers.append("app_id", app_id)
-headers.append("app_key", app_key);
-var payload = {"image" : image_url};
 
-var init = {
-	method: "POST",
-	headers: headers,
-	body: JSON.stringify(payload)
+
+function processImage() {
+		
+	// Replace <Subscription Key> with your valid subscription key.
+		var subscriptionKey = "366783bde518439a941175d6b9a7aa52";
+
+		// NOTE: You must use the same region in your REST call as you used to
+		// obtain your subscription keys. For example, if you obtained your
+		// subscription keys from westus, replace "westcentralus" in the URL
+		// below with "westus".
+		//
+		// Free trial subscription keys are generated in the westcentralus region.
+		// If you use a free trial subscription key, you shouldn't need to change 
+		// this region.
+		var uriBase =
+				"https://westus2.api.cognitive.microsoft.com/face/v1.0/detect";
+
+		// Request parameters.
+		var params = {
+				"returnFaceId": "true",
+				"returnFaceLandmarks": "false",
+				"returnFaceAttributes":
+						"age,gender,headPose,smile,facialHair,glasses,emotion," +
+						"hair,makeup,occlusion,accessories,blur,exposure,noise"
+		};
+		var sourceImageUrl = document.getElementById('sourceImage').value;
+		document.querySelector("#inputImage").src = sourceImageUrl;
+
+		// Perform the REST API call.
+		$.ajax({
+				url: uriBase + "?" + $.param(params),
+
+				// Request headers.
+				beforeSend: function(xhrObj){
+						xhrObj.setRequestHeader("Content-Type","application/json");
+						xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+				},
+
+				type: "POST",
+
+				// Request body.
+				data: '{"url": ' + '"' + sourceImageUrl + '"}',
+		})
+
+		.done(function(data) {
+				// Show formatted JSON on webpage.
+				$("#responseTextArea").val(JSON.stringify(data, null, 2));
+		})
+
+		.fail(function(jqXHR, textStatus, errorThrown) {
+				// Display error message.
+				var errorString = (errorThrown === "") ?
+						"Error. " : errorThrown + " (" + jqXHR.status + "): ";
+				errorString += (jqXHR.responseText === "") ?
+						"" : (jQuery.parseJSON(jqXHR.responseText).message) ?
+								jQuery.parseJSON(jqXHR.responseText).message :
+										jQuery.parseJSON(jqXHR.responseText).error.message;
+				alert(errorString);
+				
+				
+		});
 };
-	const request = async  () => {
-		const response = await fetch(api_url + "/v2/analytics", init)
-		const json = await response.json();
-		console.log(json);
-	}
-	request();
-}
+// recognize.addEventListener('click', function (ev) {
+// 					recognizeSubject();
+// 					ev.preventDefault();
+// 				}, false);
 

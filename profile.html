@@ -40,8 +40,8 @@ can be extracted using Canvas -->
                 );
                 video.addEventListener('canplay', function(ev){
                     if (!streaming) {
-                        video.setAttribute('width', '600');
-                        video.setAttribute('height', '450');
+                        video.setAttribute('width', width);
+                        video.setAttribute('height', height);
                         streaming = true;
                     }
                     var captureInterval = 3000;
@@ -62,8 +62,8 @@ can be extracted using Canvas -->
             $("#showCounter").html("Retrieving data...");
             var canvas = document.createElement('CANVAS');
             var context = canvas.getContext('2d');
-            canvas.width = '600';
-            canvas.height = '450';
+            canvas.width = width;
+            canvas.height = height;
             // draw video image onto canvas, get data
             context.drawImage(video, 0, 0);
             var imageData = canvas.toDataURL('image/png');

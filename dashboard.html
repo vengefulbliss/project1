@@ -77,8 +77,9 @@
 		<h1>
 			<table class="table" id="infoTables"> </table>
 		</h1>
-		<button type="button" id="recognizeButton" class="btn btn-primary btn-block">Verify Face</button>
-		<br>
+		<button type="button" id="recognizeButton" class="btn btn-primary btn-block">take picture</button>
+
+		<button onclick="processImage()" id="recognize" class="btn btn-primary btn-block">Analyze face</button>
 		</div>
 <!--this is where the recognition window ends and the display for the gifs starts.-->
 
@@ -86,34 +87,69 @@
 <div class="contentNav">
 	<div class="imageNav col-sx-12 col-sm-12 col-md-12 col-lg-12">
 		<div id="searched">
-			<div id='kairos-response'>
-				<i>(kairos response will appear here.</i>
-			</div>
-		</div>
+			<br>
+			<br>
+			
 </div>
-			<div id="gifButtonsView" class="container">
-		</div>
-			<div class="display">
-				<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
+
+
+
+
+	
 			</div>
 		</div>
-		<div id="viewGifs">
-		</div>
-		<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
 	</div>
-	<form id="gif-form" role="form">
-		<h2><legend>Search gifs</legend></h2>
+	<div id="gif-form" role="form">
 		<div class="form-group">
-			<label for="input">Search for gifs the old fashioned way.</label>
-			<input type="text" id="input">
+			<input type="text" id="inputStuff" value="search Giphy">
+			<div id="wrapper">
+					<div id="jsonOutput" >
+			<img id="sourceImage" src="" alt="thumbnail">
+			<div class="output"></div>
+		<input type="text" name="inputImage" id="inputImage"
+				value='URL here, click analyze face'/>
+				
+				<div id='jsonOutput'>
+						
+				<textarea id="responseTextArea" class="UIInput"></textarea>
+					</div>
+<br>
+<br>
+							
+			
+					
+					</div>
+		</div>
 		</div>
 		<input id="addGif" type="submit" value="Add your search" class="btn btn-primary">
 		<input id="removeGif" type="submit" value="Reset Page" class="btn btn-primary">
-	</form>
+	</div>
 </div>
 <!--this is the link fo rhte javascript page.-->
+<script type="text/javascript" src="assets/js/rectangle.js"
 	<script type="text/javascript" src="assets/js/app.js"></script>
 	<script type="text/javascript" src="assets/js/gif.js"></script>
 </body>
 
 </html>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSSample</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+</head>
+
+<h2>Face Rectangle</h2>
+<ul id="faceRectangle">
+<!-- Will populate list with response content -->
+</ul>
+
+<h2>Emotions</h2>
+<ul id="scores">
+<!-- Will populate list with response content -->
+</ul>
+
+<body>
+
+<script type="text/javascript">

@@ -3,7 +3,7 @@ body {
 	background-size: 100%;
 	image-orientation: center;
 	background-repeat: no-repeat;
-	background-color: #474747;
+	background-color: #474747
 }
 
 .header {
@@ -82,7 +82,19 @@ body {
 	padding-bottom: 5px;
 	position: relative;
 }
-
+#imageDiv {
+	margin: auto;
+	height: 30px;
+	width: 50%;
+	align-content: center;
+	display: table-cell;
+}
+#responsetextarea {
+	margin: auto;
+	 height: 60px; 
+	 width: 50%;
+	 align-content: center;
+}
 
 
 #searched {
@@ -95,7 +107,7 @@ body {
 	text-align: center;
 	width: 100%;
 }
-#kairos-response {
+#response {
 	opacity: 0.7;
 	background-size: 75%;
 	max-height: 60px;
@@ -105,17 +117,19 @@ body {
 	width: 100%;
 }
 
-#input {
+
+#inputStuff {
 	font-size: 14px;
 	color: black;
 }
 
 .imageNav {
 	background-color: rgba(126, 191, 238, 0.13);
+	max-height: 75px;
 }
 
 legend {
-	padding-top: 20px;
+	padding-top: 30px;
 	padding-left: 10px;
 	font-size: 22px;
 	color: lightcyan;
@@ -134,4 +148,60 @@ form {
 	color: lightcyan;
 }
 
+#inputStuff {
+	border: 1px solid rgb(29, 127, 145); /* Gray border */
+    border-radius: 4px; 
+	text-align: center;
+}
+
+#sourceImage {
+	width: 33.3%;
+
+	float: right;
+	position: relative;
+  border: 1px solid rgb(29, 127, 145); /* Gray border */
+    border-radius: 4px;  /* Rounded border */
+    padding: 5px; /* Some padding */ /* Set a small width */
+		padding-bottom: 10px;
+	}
+
+	#inputImage {
+		border: 1px solid rgb(29, 127, 145); /* Gray border */
+    border-radius: 4px; 
+		text-align: center;
+		float: left;
+		width: 33.3%;
+		opacity: 1;
+		font-size: 14px;
+		color: black;
+		padding-right: 10px;
+	}
+#jsonOutput{
+
+	width: 33.3%;
+	position: relative;
+	width: 600px; 
+	display:table-cell;
+	opacity: 1;
+}
+#responseTextArea {
+	border: 1px solid rgb(29, 127, 145); /* Gray border */
+    border-radius: 4px; 
+	width: 75%;
+	margin-right: 30px;
+	margin-left: 30px;
+	max-width: 375px;
+	font-size: 14px;
+	color: black;
+}
+#wrapper {
+	float: right;
+	width:70%; 
+	align-content:center; 
+	display:table;
+}
+.display {
+
+	float: left;
+}
 
