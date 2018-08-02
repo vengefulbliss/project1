@@ -45,16 +45,11 @@
 		canvas.width = width;
 		canvas.height = height;
 		canvas.getContext('2d').drawImage(video, 0, 0, width, height);
-		
-		// var imageText = function(text) {
-		// 	return 
-		// }
-		var test = sourceImage;
-		document.getElementById("inputImage").value = test;
-		
+	
 		
 		var dataUrl = canvas.toDataURL('image/png');
-		sourceImage.setAttribute('src', dataUrl);
+		sourceImage = document.getElementById(dataUrl);
+		console.log(sourceImage);
 	}
 	
 	recognizeButton.addEventListener('click', function (ev) {
@@ -89,8 +84,8 @@ function processImage() {
 						"age,gender,headPose,smile,facialHair,glasses,emotion," +
 						"hair,makeup,occlusion,accessories,blur,exposure,noise"
 		};
-		var sourceImageUrl = document.getElementById('sourceImage').value;
-		document.querySelector("#inputImage").src = sourceImageUrl;
+		var sourceImageUrl = document.getElementById('inputImage').value;
+		document.querySelector("#sourceImage").src = sourceImageUrl;
 
 		// Perform the REST API call.
 		$.ajax({
