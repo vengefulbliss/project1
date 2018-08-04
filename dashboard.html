@@ -104,10 +104,9 @@
 			<input type="text" id="inputStuff" value="search Giphy">
 			<div id="wrapper">
 					<div id="jsonOutput" >
-			<img id="sourceImage" src="" alt="thumbnail">
+			<img id="sourceImage" src="assets/images/stephen-demo.jpg">
 			<div class="output"></div>
-		<input type="text" name="inputImage" id="inputImage"
-				value='URL here, click analyze face'/>
+		<input type="text" name="inputImage" id="inputImage"		value="https://scontent-lax3-2.xx.fbcdn.net/v/t1.0-9/574651_4461737827409_2136870422_n.jpg?_nc_cat=0&oh=a7e19ccc44596ee35e57f90b21f1df6f&oe=5C0CB923"/>
 				
 				<div id='jsonOutput'>
 						
@@ -124,6 +123,40 @@
 		<input id="addGif" type="submit" value="Add your search" class="btn btn-primary">
 		<input id="removeGif" type="submit" value="Reset Page" class="btn btn-primary">
 	</div>
+</div>
+
+<div class="container col-xs-12 col-sm-12 col-md-12 col-lg-12" id="mediaResults">
+		<div id="memes" alt="giphy selection"></div>
+		<div id="container">
+		<!--the space below is going to be used to create entertainment media based on the individuals emotional state.
+		// we will need. the container, a display area for the memes to generate. 
+	// a feed area where we will allow users to look at other memes as well. 
+// a footer with contact information for my linkin/career content. and other projects.
+--><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="behind">
+		
+
+		<div id="meme" alt="photo"></div>
+		<div id="memebank">
+			<video autoplay="true" id="video"></video>
+			<canvas id="canvas"></canvas>
+		</div>
+
+		<div id="error"></div>
+
+
+		<h1>
+			<table class="table" id="infoTables"> </table>
+		</h1>
+		<button type="button" id="recognizeButton" class="btn btn-primary btn-block">Verify Face</button>
+		<br>
+
+
+
+
+
+		</div>
+	</div>
+	
 </div>
 <!--this is the link fo rhte javascript page.-->
 
