@@ -82,6 +82,7 @@ body {
 	padding-bottom: 5px;
 	position: relative;
 }
+
 #imageDiv {
 	margin: auto;
 	height: 30px;
@@ -89,13 +90,13 @@ body {
 	align-content: center;
 	display: table-cell;
 }
+
 #responsetextarea {
 	margin: auto;
-	 height: 60px; 
-	 width: 50%;
-	 align-content: center;
+	height: 60px;
+	width: 50%;
+	align-content: center;
 }
-
 
 #searched {
 	background: url('../images/giphy.gif');
@@ -107,6 +108,7 @@ body {
 	text-align: center;
 	width: 100%;
 }
+
 #response {
 	opacity: 0.7;
 	background-size: 75%;
@@ -117,9 +119,9 @@ body {
 	width: 100%;
 }
 
-
 #inputStuff {
 	font-size: 14px;
+	margin-left: 15px;
 	color: black;
 }
 
@@ -149,59 +151,109 @@ form {
 }
 
 #inputStuff {
-	border: 1px solid rgb(29, 127, 145); /* Gray border */
-    border-radius: 4px; 
+	border: 1px solid rgb(29, 127, 145);
+	/* Gray border */
+	border-radius: 4px;
 	text-align: center;
 }
 
 #sourceImage {
 	width: 33.3%;
-
 	float: right;
 	position: relative;
-  border: 1px solid rgb(29, 127, 145); /* Gray border */
-    border-radius: 4px;  /* Rounded border */
-    padding: 5px; /* Some padding */ /* Set a small width */
-		padding-bottom: 10px;
-	}
+	border: 1px solid rgb(29, 127, 145);
+	/* Gray border */
+	border-radius: 4px;
+	/* Rounded border */
+	padding: 5px;
+	/* Some padding */
+	/* Set a small width */
+	padding-bottom: 10px;
+}
 
-	#inputImage {
-		border: 1px solid rgb(29, 127, 145); /* Gray border */
-    border-radius: 4px; 
-		text-align: center;
-		float: left;
-		width: 33.3%;
-		opacity: 1;
-		font-size: 14px;
-		color: black;
-		padding-right: 10px;
-	}
-#jsonOutput{
+#inputImage {
+	border: 1px solid rgb(29, 127, 145);
+	/* Gray border */
+	border-radius: 4px;
+	text-align: center;
+	float: right;
+	min-width: 275px;
+	max-width: 275px;
+	opacity: 1;
+	font-size: 14px;
+	color: black;
+	margin-right: 10px;
+}
 
-	width: 33.3%;
+#jsonOutput {
+	margin-top: 10px;
+	display: block;
+	width: 25%;
 	position: relative;
-	width: 600px; 
-	display:table-cell;
+	max-width: 275px;
+	min-width: 275px;
+	display: table-cell;
 	opacity: 1;
 }
+
 #responseTextArea {
-	border: 1px solid rgb(29, 127, 145); /* Gray border */
-    border-radius: 4px; 
-	width: 75%;
-	margin-right: 30px;
+	float: right;
+	border: 1px solid rgb(29, 127, 145);
+	/* Gray border */
+	border-radius: 4px;
+	margin-top: 15px;
+	margin-right: 10px;
 	margin-left: 30px;
-	max-width: 375px;
+	min-width: 275px;
+	max-width: 275px;
 	font-size: 14px;
 	color: black;
 }
+
 #wrapper {
 	float: right;
-	width:70%; 
-	align-content:center; 
-	display:table;
+	width: 40%;
+	align-content: center;
+	display: table;
 }
-.display {
 
+.display {
 	float: left;
 }
 
+#gifBehind {
+	align-self: center;
+	width: 100%;
+	height: 100%;
+}
+
+#memes {
+	background: url('../images/api_giphy_header.gif');
+	opacity: .2;
+	background-color: rgba(126, 192, 238, .1);
+	background-size: 100%;
+	image-orientation: center;
+	background-repeat: no-repeat;
+	margin-top: 10px;
+	float: left;
+	width: 100%;
+	min-height: 275px;
+	background-color: rgba(66, 125, 244, .1);
+	border: 6px solid rgb(131, 136, 149);
+	align-self: center;
+	margin-bottom: 75px;
+}
+
+#instructable {
+	text-align: center;
+}
+#addgif {
+	margin-left: 20px;
+}
+.emoji {
+	margin-top: 5px;
+	margin-right:10px;
+	height: 25px;
+	width: 25px;
+	margin-left: 5px;
+}

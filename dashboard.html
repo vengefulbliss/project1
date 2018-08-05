@@ -87,6 +87,9 @@
 <div class="contentNav">
 	<div class="imageNav col-sx-12 col-sm-12 col-md-12 col-lg-12">
 		<div id="searched">
+			<h2>
+			   <p id="instruct">Past or insert image URL here.</p>
+			</h2>
 			<br>
 			<br>
 			
@@ -101,15 +104,17 @@
 	</div>
 	<div id="gif-form" role="form">
 		<div class="form-group">
-			<input type="text" id="inputStuff" value="search Giphy">
+			<p id="giphyInstruct">search for gifs the old fashioned way.</p>
+			<input type="text" id="inputStuff" onfocus="this.value=''"  value="search Giphy">
 			<div id="wrapper">
-					<div id="jsonOutput" >
+					<div id="jsonOutput">
+						<p id="instructable">Insert or past image URL here</p>
 			<img id="sourceImage" src="assets/images/stephen-demo.jpg">
 			<div class="output"></div>
-		<input type="text" name="inputImage" id="inputImage"		value="https://scontent-lax3-2.xx.fbcdn.net/v/t1.0-9/574651_4461737827409_2136870422_n.jpg?_nc_cat=0&oh=a7e19ccc44596ee35e57f90b21f1df6f&oe=5C0CB923"/>
-				
+		<input type="text" name="inputImage" onfocus="this.value=''" id="inputImage"		value="https://scontent-lax3-2.xx.fbcdn.net/v/t1.0-9/574651_4461737827409_2136870422_n.jpg?_nc_cat=0&oh=a7e19ccc44596ee35e57f90b21f1df6f&oe=5C0CB923"/>
+	
 				<div id='jsonOutput'>
-						
+				
 				<textarea id="responseTextArea" class="UIInput"></textarea>
 					</div>
 <br>
@@ -122,33 +127,31 @@
 		</div>
 		<input id="addGif" type="submit" value="Add your search" class="btn btn-primary">
 		<input id="removeGif" type="submit" value="Reset Page" class="btn btn-primary">
-	</div>
+		<br>
+		<input class=emoji  id="happy" type="image" src="./assets/images/happy.png" value="./assets/images/happy.png"/>
+		<input class=emoji id="sad" type="image" src="./assets/images/sad.png" value=""/>
+		<input class=emoji id="anger" type="image" src="./assets/images/real_angry.png" value=""/>
+		<input class=emoji id="contempt" type="image" src="./assets/images/contempt.png" value=""/>
+		<input class=emoji id="disgust" type="image" src="./assets/images/disgust.png" value=""/>
+		<input class=emoji id="fear" type="image" src="./assets/images/fear.png" value=""/>
+		<input class=emoji id="nuetral" type="image" src="./assets/images/meh.png" value=""/>
+		<input class=emoji id="surprise" type="image" src="./assets/images/surprise.png" value=""/>
+		</div>
 </div>
 
-<div class="container col-xs-12 col-sm-12 col-md-12 col-lg-12" id="mediaResults">
-		<div id="memes" alt="giphy selection"></div>
-		<div id="container">
+<div class="container col-xs-6 col-sm-6 col-md-6 col-lg-6" id="mediaResults">
+		<div class="container" id="memes">
 		<!--the space below is going to be used to create entertainment media based on the individuals emotional state.
 		// we will need. the container, a display area for the memes to generate. 
 	// a feed area where we will allow users to look at other memes as well. 
 // a footer with contact information for my linkin/career content. and other projects.
---><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="behind">
+--><div id="gifBehind">
 		
 
-		<div id="meme" alt="photo"></div>
-		<div id="memebank">
-			<video autoplay="true" id="video"></video>
-			<canvas id="canvas"></canvas>
 		</div>
 
-		<div id="error"></div>
-
-
-		<h1>
-			<table class="table" id="infoTables"> </table>
-		</h1>
-		<button type="button" id="recognizeButton" class="btn btn-primary btn-block">Verify Face</button>
 		<br>
+		
 
 
 
