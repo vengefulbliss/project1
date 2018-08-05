@@ -82,14 +82,12 @@
 		<button onclick="processImage()" id="recognize" class="btn btn-primary btn-block">Analyze face</button>
 		</div>
 <!--this is where the recognition window ends and the display for the gifs starts.-->
-
+<br>
 
 <div class="contentNav">
 	<div class="imageNav col-sx-12 col-sm-12 col-md-12 col-lg-12">
 		<div id="searched">
-			<h2>
-			   <p id="instruct">Past or insert image URL here.</p>
-			</h2>
+		
 			<br>
 			<br>
 			
@@ -105,7 +103,7 @@
 	<div id="gif-form" role="form">
 		<div class="form-group">
 			<p id="giphyInstruct">search for gifs the old fashioned way.</p>
-			<input type="text" id="inputStuff" onfocus="this.value=''"  value="search Giphy">
+			<input type="text" id="topic-input" name="topic" placeholder="Enter Topic" >
 			<div id="wrapper">
 					<div id="jsonOutput">
 						<p id="instructable">Insert or past image URL here</p>
@@ -115,7 +113,7 @@
 	
 				<div id='jsonOutput'>
 				
-				<textarea id="responseTextArea" class="UIInput"></textarea>
+				<textarea id="responseTextArea" placeholder="results here" cols="30" rows="5" class="UIInput"></textarea>
 					</div>
 <br>
 <br>
@@ -125,7 +123,7 @@
 					</div>
 		</div>
 		</div>
-		<input id="addGif" type="submit" value="Add your search" class="btn btn-primary">
+		<input id="addTopic" type="submit"  value="Submit" class="btn btn-primary"> 
 		<input id="removeGif" type="submit" value="Reset Page" class="btn btn-primary">
 		<br>
 		<input class=emoji  id="happy" type="image" src="./assets/images/happy.png" value="./assets/images/happy.png"/>
@@ -141,12 +139,21 @@
 
 <div class="container col-xs-6 col-sm-6 col-md-6 col-lg-6" id="mediaResults">
 		<div class="container" id="memes">
+				<div id="gifArea">
+			
+						</div>
 		<!--the space below is going to be used to create entertainment media based on the individuals emotional state.
 		// we will need. the container, a display area for the memes to generate. 
 	// a feed area where we will allow users to look at other memes as well. 
 // a footer with contact information for my linkin/career content. and other projects.
 --><div id="gifBehind">
-		
+		<div class="col-md-7">
+				<!-- Gifs Panel -->
+				
+						
+						</div>
+				</div>
+				</div>
 
 		</div>
 

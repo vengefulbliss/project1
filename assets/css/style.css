@@ -82,6 +82,10 @@ body {
 	padding-bottom: 5px;
 	position: relative;
 }
+#recognize {
+	margin-bottom: 3px;
+
+}
 
 #imageDiv {
 	margin: auto;
@@ -119,12 +123,6 @@ body {
 	width: 100%;
 }
 
-#inputStuff {
-	font-size: 14px;
-	margin-left: 15px;
-	color: black;
-}
-
 .imageNav {
 	background-color: rgba(126, 191, 238, 0.13);
 	max-height: 75px;
@@ -150,11 +148,15 @@ form {
 	color: lightcyan;
 }
 
-#inputStuff {
+#text-input{
 	border: 1px solid rgb(29, 127, 145);
 	/* Gray border */
 	border-radius: 4px;
+		font-size: 14px;
+	margin-left: 15px;
+	color: black;
 	text-align: center;
+	width: 200px;
 }
 
 #sourceImage {
@@ -173,6 +175,7 @@ form {
 
 #inputImage {
 	border: 1px solid rgb(29, 127, 145);
+	background-color: rgb(211, 248, 255, .2);
 	/* Gray border */
 	border-radius: 4px;
 	text-align: center;
@@ -197,6 +200,7 @@ form {
 }
 
 #responseTextArea {
+	background-color: transparent;
 	float: right;
 	border: 1px solid rgb(29, 127, 145);
 	/* Gray border */
@@ -207,7 +211,7 @@ form {
 	min-width: 275px;
 	max-width: 275px;
 	font-size: 14px;
-	color: black;
+	color: rgb(130, 228, 245);
 }
 
 #wrapper {
@@ -232,15 +236,15 @@ form {
 	opacity: .2;
 	background-color: rgba(126, 192, 238, .1);
 	background-size: 100%;
-	image-orientation: center;
-	background-repeat: no-repeat;
+
+	image-orientation: cover;
+	background-repeat: repeat;
 	margin-top: 10px;
 	float: left;
 	width: 100%;
 	min-height: 275px;
-	background-color: rgba(66, 125, 244, .1);
 	border: 6px solid rgb(131, 136, 149);
-	align-self: center;
+	margin: center;
 	margin-bottom: 75px;
 }
 
@@ -248,6 +252,9 @@ form {
 	text-align: center;
 }
 #addgif {
+	margin-left: 20px;
+}
+#addTopic {
 	margin-left: 20px;
 }
 .emoji {
