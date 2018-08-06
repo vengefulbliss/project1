@@ -55,7 +55,9 @@
 				</ul>
 			</div>
 		</div>
-	</nav>
+	</nav>	
+	
+	<button class="collapsible">toggle webcam</button>
 	<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="behind">
 		
 		<br>
@@ -102,16 +104,17 @@
 	</div>
 	<div id="gif-form" role="form">
 		<div class="form-group">
+
 			<p id="giphyInstruct">search for gifs the old fashioned way.</p>
 			<input type="text" id="topic-input" name="topic" placeholder="Enter Topic" >
 			<div id="wrapper">
 					<div id="jsonOutput">
-						<p id="instructable">Insert or past image URL here</p>
+						<p id="instructable">Insert or paste image URL here</p>
 			<img id="sourceImage" src="assets/images/stephen-demo.jpg">
 			<div class="output"></div>
 		<input type="text" name="inputImage" onfocus="this.value=''" id="inputImage"		value="https://scontent-lax3-2.xx.fbcdn.net/v/t1.0-9/574651_4461737827409_2136870422_n.jpg?_nc_cat=0&oh=a7e19ccc44596ee35e57f90b21f1df6f&oe=5C0CB923"/>
 	
-				<div id='jsonOutput'>
+				<div id='jsonResponse'>
 				
 				<textarea id="responseTextArea" placeholder="results here" cols="30" rows="5" class="UIInput"></textarea>
 					</div>
@@ -126,28 +129,41 @@
 		<input id="addTopic" type="submit"  value="Submit" class="btn btn-primary"> 
 		<input id="removeGif" type="submit" value="Reset Page" class="btn btn-primary">
 		<br>
-		<input class=emoji  id="happy" type="image" src="./assets/images/happy.png" value="./assets/images/happy.png"/>
-		<input class=emoji id="sad" type="image" src="./assets/images/sad.png" value=""/>
-		<input class=emoji id="anger" type="image" src="./assets/images/real_angry.png" value=""/>
-		<input class=emoji id="contempt" type="image" src="./assets/images/contempt.png" value=""/>
-		<input class=emoji id="disgust" type="image" src="./assets/images/disgust.png" value=""/>
-		<input class=emoji id="fear" type="image" src="./assets/images/fear.png" value=""/>
-		<input class=emoji id="nuetral" type="image" src="./assets/images/meh.png" value=""/>
-		<input class=emoji id="surprise" type="image" src="./assets/images/surprise.png" value=""/>
-		</div>
+		<!--this is where the buttons will  populate.-->
+		
+		<input class=emoji id="happy" type="image" src="./assets/images/happy.png" data-name="happy"/>
+		<input class=emoji id="sad" type="image" src="./assets/images/sad.png" data-name="sad"/>
+		<input class=emoji id="anger" type="image" src="./assets/images/real_angry.png" data-name="angry"/>
+		<input class=emoji id="contempt" type="image" src="./assets/images/contempt.png" data-name="contempt"/>
+		<input class=emoji id="disgust" type="image" src="./assets/images/disgust.png" data-name="disgust"/>
+		<input class=emoji id="fear" type="image" src="./assets/images/fear.png" data-name="scared"/>
+		<input class=emoji id="nuetral" type="image" src="./assets/images/meh.png" data-name="bored"/>
+		<input class=emoji id="surprise" type="image" src="./assets/images/surprise.png" data-name="surprised"/>
+	<div id=btnArea>	
+
+
+	</div>
+	</div>
 </div>
 
 <div class="container col-xs-6 col-sm-6 col-md-6 col-lg-6" id="mediaResults">
-		<div class="container" id="memes">
-				<div id="gifArea">
+	<div class="container" id="memes">
 			
+			<div class="container" id="mediaOutlet">
+			<div id="gifArea">
+				
+
+			</div>
+			<div class="container" id="gallery">
+				
+			</div>
 						</div>
+					</div>
 		<!--the space below is going to be used to create entertainment media based on the individuals emotional state.
 		// we will need. the container, a display area for the memes to generate. 
 	// a feed area where we will allow users to look at other memes as well. 
 // a footer with contact information for my linkin/career content. and other projects.
---><div id="gifBehind">
-		<div class="col-md-7">
+-->
 				<!-- Gifs Panel -->
 				
 						
@@ -161,16 +177,16 @@
 		
 
 
-
-
-
 		</div>
 	</div>
 	
 </div>
-<!--this is the link fo rhte javascript page.-->
 
-	<script type="text/javascript" src="assets/js/app.js"></script>
+
+	
+
+
+<script type="text/javascript" src="assets/js/app.js"></script>
 	<script type="text/javascript" src="assets/js/gif.js"></script>
 </body>
 

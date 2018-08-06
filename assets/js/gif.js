@@ -1,4 +1,4 @@
-var topics = ["happy", 'sad', 'angry', 'contempt', 'disgust', 'fear', 'neutral', 'surprise']
+var topics = []
 var limit = 10;
 var topic = "";
 
@@ -24,7 +24,7 @@ function displayTopicInfo() {
       	for(var i = 0; i < results.length; i++) {
 
 			// Creates a generic div to hold the topic
-			var topicDiv = $('<div>');	
+			var topicDiv = $('<div class="clearfix">');	
 
 			// Retrieves the Rating Data
 			var rating = results[i].rating;
@@ -47,7 +47,12 @@ function displayTopicInfo() {
 			image.attr('data-state', 'still');
 			image.attr('data-name', topic);
 			image.addClass('topicImage');
-
+			
+			
+		
+				
+				
+			
 			// console.log("------------------");
 			// console.log(results[i]);
 			// console.log(topic);
@@ -88,7 +93,7 @@ function genButtons(){
 } // End Function genButtons
 
 // This function handles events where one button is clicked
-$('#addTopic').on('click', function(){
+$('#addTopic').on('click',  function(){
 
 	// This line of code will grab the input from the textbox
 	var topic = $('#topic-input').val().trim();
@@ -119,11 +124,14 @@ function changestate() {
 
 } // End of function changestate
 
+	
 	// This calls the genButtons() function
 	genButtons();
 
 	// Generic function for displaying the topicInfo
 	$(document).on('click', '.topic', displayTopicInfo);
-
+	$(document).on('click', '.emoji', displayTopicInfo);
 	//Generic function for calling changestate based class topicImage
+	
 	$(document).on('click', '.topicImage', changestate);
+	$(document).on('click', '#recognizeButton', changestate);
