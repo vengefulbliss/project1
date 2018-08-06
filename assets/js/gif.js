@@ -134,4 +134,4 @@ function changestate() {
 	//Generic function for calling changestate based class topicImage
 	
 	$(document).on('click', '.topicImage', changestate);
-	$(document).on('click', '#recognizeButton', changestate);
+	
