@@ -126,8 +126,17 @@ function changestate() {
 
 	
 	// This calls the genButtons() function
-	genButtons();
+	genButtons(); 
+	function SetButtonStatus(sender, target)
+{
 
+if ( sender.value.length >= 1 )
+document.getElementById(target).disabled = false;
+
+else
+
+document.getElementById(target).disabled = true;
+}
 	// Generic function for displaying the topicInfo
 	$(document).on('click', '.topic', displayTopicInfo);
 	$(document).on('click', '.emoji', displayTopicInfo);

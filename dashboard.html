@@ -108,7 +108,7 @@
 		<div class="form-group">
 
 			<p id="giphyInstruct">search for gifs the old fashioned way.</p>
-			<input type="text" id="topic-input" name="topic" placeholder="Enter Topic" >
+			<input type="text" id="topic-input" name="topic" placeholder="enter gifs here"  onkeyup="SetButtonStatus(this, 'addTopic')">
 			<div id="wrapper">
 					<div id="jsonOutput">
 						<p id="instructable">Insert or paste image URL here</p>
@@ -128,7 +128,7 @@
 					</div>
 		</div>
 		</div>
-		<input id="addTopic" type="submit"  value="Submit" class="btn btn-primary"> 
+		<input id="addTopic" type="submit"  value="Submit" class="btn btn-primary" disabled="true"> 
 		<input id="removeGif" type="submit" value="Reset Page" class="btn btn-primary">
 		<br>
 		<!--this is where the buttons will  populate.-->
